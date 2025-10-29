@@ -1,5 +1,6 @@
 import cycls, os, json, yfinance as yf, plotly.graph_objects as go, dotenv
 from openai import OpenAI
+from ui import header, intro
 
 dotenv.load_dotenv()
 agent = cycls.Agent(api_key=os.getenv("CYCLS_API_KEY"), pip=["yfinance", "plotly", "openai", "python-dotenv"], copy=[".env"])
@@ -36,7 +37,7 @@ def to_iframe(fig):
     html = fig.to_html(include_plotlyjs='cdn', config={'displayModeBar': True, 'responsive': True})
     return f'<iframe srcdoc="{html.replace(chr(34), "&quot;")}" width="100%" height="650" frameborder="0" style="border-radius: 8px;"></iframe>'
 
-@agent()
+@agent(header=header, intro=intro)
 async def stock_agent(context):
     from openai import OpenAI
     dotenv.load_dotenv()
@@ -78,3 +79,4 @@ async def stock_agent(context):
     return response.choices[0].message.content
 
 agent.cycls(prod=True)
+
