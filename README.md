@@ -2,7 +2,7 @@
 
 A conversational AI that provides real-time stock data, technical analysis, and interactive charts.
 
-**Live Demo:** `https://stock-agent-280879789566.me-central1.run.app/`
+**Live Demo:** `https://stocks-agent.cycls.ai/`
 
 ---
 
