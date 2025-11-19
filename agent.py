@@ -78,5 +78,5 @@ async def stock_agent(context):
     
     return response.choices[0].message.content
 
-agent.push(prod=True)
+agent.modal(prod=True)
 

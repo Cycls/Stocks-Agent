@@ -1,3 +1,4 @@
+import urllib.parse
 
 header = """
 <raw>
@@ -74,19 +75,20 @@ header = """
 </header>
 </raw>
 """
-intro = """
+
+intro = f"""
 <div class="mx-auto mt-20 max-w-4xl">
   <div class="flex flex-wrap items-center justify-center gap-3">
-    <a href="https://cycls.com/send/Compare%20AAPL%20vs%20MSFT%20YTD" class="prompt chip group rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm shadow-sm transition hover:shadow-md">
+    <a href="https://cycls.com/send/{urllib.parse.quote('Compare AAPL vs MSFT YTD')}" class="prompt chip group rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm shadow-sm transition hover:shadow-md">
       Compare <span class="font-semibold">AAPL</span> vs <span class="font-semibold">MSFT</span> YTD
     </a>
-    <a href="https://cycls.com/send/What%27s%20the%20current%20price%20of%20NVDA%3F" class="prompt chip rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm shadow-sm transition hover:shadow-md">
+    <a href="https://cycls.com/send/{urllib.parse.quote("What's the current price of NVDA?")}" class="prompt chip rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm shadow-sm transition hover:shadow-md">
       What's the current price of <span class="font-semibold">NVDA</span>?
     </a>
-    <a href="https://cycls.com/send/Show%20top%20gainers%20today" class="prompt chip rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm shadow-sm transition hover:shadow-md">
+    <a href="https://cycls.com/send/{urllib.parse.quote('Show top gainers today')}" class="prompt chip rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm shadow-sm transition hover:shadow-md">
       Show <span class="font-semibold">top gainers</span> today
     </a>
-    <a href="https://cycls.com/send/Simple%20analysis%20on%20TSLA" class="prompt chip rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm shadow-sm transition hover:shadow-md">
+    <a href="https://cycls.com/send/{urllib.parse.quote('Simple analysis on TSLA')}" class="prompt chip rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm shadow-sm transition hover:shadow-md">
       Simple analysis on <span class="font-semibold">TSLA</span>
     </a>
   </div>
