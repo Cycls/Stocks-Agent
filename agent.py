@@ -3,7 +3,7 @@ from openai import OpenAI
 from ui import header, intro
 
 dotenv.load_dotenv()
-agent = cycls.Agent(keys=[os.getenv("CYCLS_KEY_1"),os.getenv("CYCLS_KEY_2")], pip=["yfinance", "plotly", "openai", "python-dotenv"], copy=[".env"])
+cycls.api_key = os.getenv("CYCLS_API_KEY")
 
 def get_stock_data(symbol: str, period: str = "1mo"):
     stock, hist = yf.Ticker(symbol.upper()), yf.Ticker(symbol.upper()).history(period=period)
@@ -37,7 +37,7 @@ def to_iframe(fig):
     html = fig.to_html(include_plotlyjs='cdn', config={'displayModeBar': True, 'responsive': True})
     return f'<iframe srcdoc="{html.replace(chr(34), "&quot;")}" width="100%" height="650" frameborder="0" style="border-radius: 8px;"></iframe>'
 
-@agent("stocks-agent", header=header, intro=intro)
+@cycls.app("stocks-agent",title = "stocks agent",pip=["yfinance","plotly","openai","python-dotenv"],copy =[".env","ui.py"] , header=header, intro=intro,analytics=True)
 async def stock_agent(context):
     from openai import OpenAI
     dotenv.load_dotenv()
@@ -78,5 +78,5 @@ async def stock_agent(context):
     
     return response.choices[0].message.content
 
-agent.modal(prod=True)
+stock_agent.deploy()
 
